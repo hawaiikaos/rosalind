@@ -1,0 +1,5 @@
+#bash commands
+cat rosalind_ini.txt | fold -w1 | grep "A" | wc -l
+cat rosalind_ini.txt | fold -w1 | grep "C" | wc -l
+cat rosalind_ini.txt | fold -w1 | grep "G" | wc -l
+cat rosalind_ini.txt | fold -w1 | grep "T" | wc -l
