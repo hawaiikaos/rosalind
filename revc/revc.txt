@@ -1,0 +1,10 @@
+#bash command
+sed -i -- 's/A/W/g' rosalind_revc.txt
+sed -i -- 's/T/X/g' rosalind_revc.txt
+sed -i -- 's/C/Y/g' rosalind_revc.txt
+sed -i -- 's/G/Z/g' rosalind_revc.txt
+sed -i -- 's/W/T/g' rosalind_revc.txt
+sed -i -- 's/X/A/g' rosalind_revc.txt
+sed -i -- 's/Y/G/g' rosalind_revc.txt
+sed -i -- 's/Z/C/g' rosalind_revc.txt 
+cat rosalind_revc.txt | rev > ros-reversed.txt
