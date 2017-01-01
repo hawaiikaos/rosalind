@@ -1,5 +1,5 @@
-//Adapted from: http://stackoverflow.com/questions/24094466/javascript-sum-two-arrays-in-single-iteration
 Array.prototype.addArray = function (a) {
+    //Adapted from: http://stackoverflow.com/questions/24094466/javascript-sum-two-arrays-in-single-iteration
     var sum = [];
     if (a != null && this.length == a.length) {
         for (var i = 0; i < a.length; i++) {
@@ -11,6 +11,7 @@ Array.prototype.addArray = function (a) {
 
 function countPermutations(t) {
     /* t: total number of individuals */
+    //still not actually sure WHY this works, but it does
     var count = 0;
     var tally = t;
     
@@ -54,21 +55,14 @@ function calculateDominance(k, m, n) {
        m: dominant-recessive input
        n: recessive-recessive input
     */
-    var DDProbability = DRProbability = RRProbability = 0;
     
     var total = parseInt(k) + parseInt(m) + parseInt(n);
-    //total = 1;
-    //console.log("total: ", total);
+    //not really all permutations of children, just the combinations of parents
     var permutations = countPermutations(total);
-    //console.log("permutations: ", permutations);
     
     var dMatrix = ['d','d'];
     var drMatrix = ['d','r'];
     var rMatrix = ['r','r'];
-    
-    var result = childMatrix(drMatrix, drMatrix);
-    //console.log("result: ", result);
-    //console.log(countChildren(result));
     
     var resultMatrix = [0,0,0];
     
@@ -79,15 +73,8 @@ function calculateDominance(k, m, n) {
         for (aa = 0; aa < k; aa++) {
             
             if ((aa !== x) && (aa > max) && (x > max)) {
-                /*console.log("not like");
-                console.log("x: ", x, "aa: ", aa, "max: ", max);
-                console.log("aa !== x: ", (aa !== x));
-                console.log("aa > max: ", (aa > max));
-                console.log("x > max: ", (x > max));*/
                 resultMatrix = resultMatrix.addArray(countChildren(childMatrix(dMatrix, dMatrix)));
                 permcheck++;
-            } else  {
-                //console.log("like");
             }
             max++;
         }
@@ -131,14 +118,10 @@ function calculateDominance(k, m, n) {
             max++;
         }
     }
-    //console.log("permcheck: ", permcheck);
-    
-    //console.log("resultMatrix: ", resultMatrix);
     //add up all combinations that have a dominant allele
     var dominantTotal = resultMatrix[0] + resultMatrix[1];
     var totalTotal = resultMatrix[0] + resultMatrix[1] + resultMatrix[2];
     var probability = dominantTotal / totalTotal;
-    //console.log("probability: ", probability);
     console.log(probability);
 }
 
