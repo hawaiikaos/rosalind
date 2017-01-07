@@ -60,5 +60,29 @@ fs.readFile('rosalind_tran.txt', 'utf8', function (err, data) {
   var rosgroups = roslib.rosNotation(lines);
   
   //console.log("rosgroups: ", rosgroups);
-  console.log("discoverMatchType: ", discoverMatchType(rosgroups[0].rostext[0], rosgroups[1].rostext[0]));
+  //console.log("discoverMatchType: ", discoverMatchType(rosgroups[0].rostext[0], rosgroups[1].rostext[0]));
+  
+  var transitionCount = 0;
+  var transversionCount = 0;
+  
+  for (i = 0; i < rosgroups[0].rostext.length; i++) {
+      var result = discoverMatchType(rosgroups[0].rostext[i], rosgroups[1].rostext[i]);
+      if (result === "transition") {
+          transitionCount++;
+      } else if (result === "transversion") {
+          transversionCount++;
+      } else {
+          //is self, no need to count
+          //transversionCount++;
+      }
+  }
+  console.log("s1 length: ", rosgroups[0].rostext.length);
+  console.log("s2 length: ", rosgroups[1].rostext.length);
+  console.log("total transitions: ", transitionCount);
+  console.log("total transversions: ", transversionCount);
+  console.log("ratio: ", transversionCount/transitionCount);
+  
+  console.log("s1: ", rosgroups[0].rostext);
+  console.log("s2: ", rosgroups[1].rostext);
+
 });
