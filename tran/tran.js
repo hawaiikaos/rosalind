@@ -72,13 +72,14 @@ fs.readFile('rosalind_tran.txt', 'utf8', function (err, data) {
           //transversionCount++;
       }
   }
-  console.log("s1 length: ", rosgroups[0].rostext.length);
+  /*console.log("s1 length: ", rosgroups[0].rostext.length);
   console.log("s2 length: ", rosgroups[1].rostext.length);
   console.log("total transitions: ", transitionCount);
   console.log("total transversions: ", transversionCount);
   console.log("ratio: ", transitionCount/transversionCount);
   
   console.log("s1: ", rosgroups[0].rostext);
-  console.log("s2: ", rosgroups[1].rostext);
+  console.log("s2: ", rosgroups[1].rostext);*/
+  console.log(transitionCount/transversionCount);
 
 });
