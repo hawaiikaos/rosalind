@@ -14,35 +14,31 @@ function discoverMatchType(a, b) {
        b: character 2 to match
     */
     
+    if (a === b) {
+        return "self";
+    }
+    
     if (a === "A") {
         if (b === "G") {
             return "transition";
-        } else if (b === "A") {
-            return "self";
         } else {
             return "transversion";
         }
     } else if (a === "G") {
         if (b === "A") {
             return "transition";
-        } else if (b === "G") {
-            return "self";
         } else {
             return "transversion";
         }
     } else if (a === "C") {
         if (b === "T") {
             return "transition";
-        } else if (b === "C") {
-            return "self";
         } else {
             return "transversion";
         }
     } else if (a === "T") {
         if (b === "C") {
             return "transition";
-        } else if (b === "C") {
-            return "self";
         } else {
             return "transversion";
         }
@@ -80,7 +76,7 @@ fs.readFile('rosalind_tran.txt', 'utf8', function (err, data) {
   console.log("s2 length: ", rosgroups[1].rostext.length);
   console.log("total transitions: ", transitionCount);
   console.log("total transversions: ", transversionCount);
-  console.log("ratio: ", transversionCount/transitionCount);
+  console.log("ratio: ", transitionCount/transversionCount);
   
   console.log("s1: ", rosgroups[0].rostext);
   console.log("s2: ", rosgroups[1].rostext);
